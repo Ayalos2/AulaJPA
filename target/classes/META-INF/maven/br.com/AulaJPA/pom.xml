@@ -22,10 +22,6 @@
       <scope>test</scope>
     </dependency>
     
-	<dependency>
-	    <groupId>io.supabase</groupId>
-	    <artifactId>supabase-java</artifactId>
-	</dependency>
 
     <dependency>
         <groupId>javax.persistence</groupId>
