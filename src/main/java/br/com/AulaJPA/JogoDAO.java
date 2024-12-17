@@ -25,7 +25,7 @@ public class JogoDAO {
 
 	    public List<Jogo> listar() {
 	        EntityManager em = factory.createEntityManager();
-	        TypedQuery<Jogo> query = em.createQuery("SELECT u FROM Jogo u", Jogo.class);
+	        TypedQuery<Jogo> query = em.createQuery("SELECT j FROM Jogo j", Jogo.class);
 	        List<Jogo> jogos = query.getResultList();
 	        em.close();
 	        return jogos;
@@ -40,12 +40,13 @@ public class JogoDAO {
 	    
 	    public Jogo buscaIdioma(Long id) {
 	        EntityManager em = factory.createEntityManager();
-	        TypedQuery<Jogo> query = em.createQuery("SELECT j FROM Jogo j LEFT JOIN FETCH j.idioma WHERE j.id = :id", Jogo.class);
+	        TypedQuery<Jogo> query = em.createQuery("SELECT j FROM Jogo j LEFT JOIN FETCH j.idiomas WHERE j.id = :id", Jogo.class);
 	        query.setParameter("id", id);	  
 	        Jogo jogo = query.getSingleResult();
 	        em.close();
 	        return jogo;
 	    }
+
 
 	    public Jogo atualizar(Jogo jogo) {
 	        EntityManager em = factory.createEntityManager();

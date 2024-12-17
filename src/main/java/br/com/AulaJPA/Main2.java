@@ -27,6 +27,11 @@ public class Main2 {
         jogo2.setUsuario(usuario);
         jogoDAO.salvar(jogo2);
         
+        Idioma idioma1 = new Idioma();
+        idioma1.setIdioma("Português");
+        idioma1.setJogo(jogo2);
+        idiomaDAO.salvar(idioma1);
+        
         
         List<Usuario> usuarios = usuarioDAO.listar();
 
@@ -37,6 +42,10 @@ public class Main2 {
             // Imprimir as plataformas associadas à empresa
             for (Jogo jogos : user.getJogos()) {
                 System.out.println("  Jogo: " + jogos.getNome());
+                
+                for (Idioma idiomas : jogos.getIdiomas()) {
+                	System.out.println(" Idioma: " + idiomas.getIdioma());
+                }
             }
             System.out.println();  // Linha em branco entre as empresas
         }

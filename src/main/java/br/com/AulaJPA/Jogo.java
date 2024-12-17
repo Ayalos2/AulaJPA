@@ -18,9 +18,8 @@ public class Jogo {
     @JoinColumn(name = "usuario_id")
     private Usuario usuario;
     
-    @OneToMany
-    @JoinColumn(name = "idioma_id")
-    private Set<Idioma> idioma;
+    @OneToMany(mappedBy = "jogo", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Set<Idioma> idiomas;
 
     // Getters e setters
     public Long getId() { return id; }
@@ -31,8 +30,9 @@ public class Jogo {
     public void setGenero(String genero) { this.genero = genero; }
     public Usuario getUsuario() { return usuario; }
     public void setUsuario(Usuario usuario) { this.usuario = usuario; }
-    public Set<Idioma> getIdioma() {return idioma; }
-    public void setIdioma(Idioma idioma) {this.idioma = (Set<Idioma>) idioma; }
+    public Set<Idioma> getIdiomas() { return idiomas; }
+    public void setIdiomas(Set<Idioma> idiomas) { this.idiomas = idiomas; }
+
 
     @Override
     public String toString() {
