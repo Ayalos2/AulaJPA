@@ -1,0 +1,15 @@
+br\com\AulaJPA\Main.class
+br\com\AulaJPA\JogoDAO.class
+br\com\AulaJPA\PlataformaDAO.class
+br\com\AulaJPA\Usuario.class
+br\com\AulaJPA\Idioma.class
+br\com\AulaJPA\Main2.class
+br\com\AulaJPA\Empresa.class
+br\com\AulaJPA\UsuarioDAO.class
+br\com\AulaJPA\App.class
+br\com\AulaJPA\CategoriaDAO.class
+br\com\AulaJPA\Jogo.class
+br\com\AulaJPA\Plataforma.class
+br\com\AulaJPA\EmpresaDAO.class
+br\com\AulaJPA\IdiomaDAO.class
+br\com\AulaJPA\Categoria.class

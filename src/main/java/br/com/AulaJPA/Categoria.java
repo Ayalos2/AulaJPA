@@ -1,32 +1,31 @@
 package br.com.AulaJPA;
 
-
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
-public class Pessoa {
+@Table(name = "Categoria")
+public class Categoria {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    
+    @Column
     private String nome;
 
-    @OneToMany(mappedBy = "pessoa", cascade = CascadeType.ALL)
-    private List<Endereco> enderecos;
-
+    @ManyToOne
+    @JoinColumn(name = "empresa_id")
+    private Empresa empresa;
+    
     // Getters e setters
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
     public String getNome() { return nome; }
     public void setNome(String nome) { this.nome = nome; }
-    public List<Endereco> getEnderecos() { return enderecos; }
-    public void setEnderecos(List<Endereco> enderecos) { this.enderecos = enderecos; }
-
+    public Empresa getEmpresa() { return empresa; }
+    public void setEmpresa(Empresa empresa) { this.empresa = empresa; }
+    
     @Override
     public String toString() {
         return this.nome;
     }
-
 }
-

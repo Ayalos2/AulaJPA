@@ -26,7 +26,7 @@ public class UsuarioDAO {
 
     public List<Usuario> listar() {
         EntityManager em = factory.createEntityManager();
-        TypedQuery<Usuario> query = em.createQuery("SELECT u FROM Usuario u", Usuario.class);
+        TypedQuery<Usuario> query = em.createQuery("SELECT u FROM Usuario u LEFT JOIN FETCH u.jogos j LEFT JOIN FETCH j.idioma", Usuario.class);
         List<Usuario> usuarios = query.getResultList();
         em.close();
         return usuarios;

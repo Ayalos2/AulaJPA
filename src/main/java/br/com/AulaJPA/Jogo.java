@@ -1,5 +1,7 @@
 package br.com.AulaJPA;
 
+import java.util.Set;
+
 import javax.persistence.*;
 
 @Entity
@@ -15,6 +17,10 @@ public class Jogo {
     @ManyToOne
     @JoinColumn(name = "usuario_id")
     private Usuario usuario;
+    
+    @OneToMany
+    @JoinColumn(name = "idioma_id")
+    private Set<Idioma> idioma;
 
     // Getters e setters
     public Long getId() { return id; }
@@ -25,6 +31,8 @@ public class Jogo {
     public void setGenero(String genero) { this.genero = genero; }
     public Usuario getUsuario() { return usuario; }
     public void setUsuario(Usuario usuario) { this.usuario = usuario; }
+    public Set<Idioma> getIdioma() {return idioma; }
+    public void setIdioma(Idioma idioma) {this.idioma = (Set<Idioma>) idioma; }
 
     @Override
     public String toString() {

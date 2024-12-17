@@ -5,46 +5,41 @@ import java.util.List;
 public class Main2 {
     public static void main(String[] args) {
         UsuarioDAO usuarioDAO = new UsuarioDAO();
+        IdiomaDAO idiomaDAO = new IdiomaDAO();
+        JogoDAO jogoDAO = new JogoDAO();
 
         // Cria e salva o usuário
         Usuario usuario = new Usuario();
-        usuario.setNome("João Silva");
-        usuario.setEmail("joao.silva@example.com");
-
-        // Cria jogo e vincula ao usuario
+        usuario.setNome("Leonardo Lucas");
+        usuario.setEmail("leo@gmail.com");
+        usuarioDAO.salvar(usuario);
+        
+        //Cria e salva os jogos
         Jogo jogo1 = new Jogo();
         jogo1.setNome("Super Mario");
         jogo1.setGenero("Aventura");
         jogo1.setUsuario(usuario);
+        jogoDAO.salvar(jogo1);
 
         Jogo jogo2 = new Jogo();
         jogo2.setNome("Zelda");
         jogo2.setGenero("Aventura");
         jogo2.setUsuario(usuario);
+        jogoDAO.salvar(jogo2);
+        
+        
+        List<Usuario> usuarios = usuarioDAO.listar();
 
-        usuario.setJogos(List.of(jogo1, jogo2));
-        usuarioDAO.salvar(usuario);
-
-        // Lista todos os usuários
-        System.out.println("Usuários:");
-        usuarioDAO.listar().forEach(u -> System.out.println(u.getNome() + ", " + u.getEmail()));
-
-        // Buscar o usuário por ID
-        Usuario usuarioBuscado = usuarioDAO.buscarPorId(usuario.getId());
-        System.out.println("Usuário buscado: " + usuarioBuscado.getNome() + ", " + usuarioBuscado.getEmail());
-
-        // Lista os jogos do usuário
-        System.out.println("Jogos do usuário:");
-        usuarioDAO.listarJogosDoUsuario(usuario.getId()).forEach(j -> System.out.println(j.getNome() + ", " + j.getGenero()));
-
-        // Atualiza o usuário
-        usuarioBuscado.setNome("João da Silva");
-        usuarioDAO.atualizar(usuarioBuscado);
-        System.out.println("Usuário atualizado: " + usuarioBuscado.getNome() + ", " + usuarioBuscado.getEmail());
-
-        // Deleta o usuário
-        usuarioDAO.deletar(usuarioBuscado.getId());
-        System.out.println("Usuário deletado.");
+        // Para cada empresa, imprimir o nome, as plataformas e as categorias associadas
+        for (Usuario user : usuarios) {
+            // Imprimir o nome da empresa
+            System.out.println("Usuario: " + user.getNome());
+            // Imprimir as plataformas associadas à empresa
+            for (Jogo jogos : user.getJogos()) {
+                System.out.println("  Jogo: " + jogos.getNome());
+            }
+            System.out.println();  // Linha em branco entre as empresas
+        }
 
     }
 }
